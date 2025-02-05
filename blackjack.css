@@ -1,38 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    margin: 0px;
+    font-family: Arial, sans-serif;
     background-image: url(bjbg.png);
-    background-size: cover;
-    background-repeat: no-repeat;
+    color: white;
     text-align: center;
 }
 
-h2{
+.game-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 2em;
+    margin-top: 20px;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.cards img {
+    width: 70px;
+    margin: 5px;
+}
+
+button {
+    background-color: #3498db;
     color: white;
-    padding: 75px;
-}
-
- #stay {
-    height: 50px;
-    width: 100px;
-    font-size: 20px;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    cursor: pointer;
     margin: 10px;
 }
 
-#hit {
-    height: 50px;
-    width: 100px;
-    font-size: 20px;
-    margin: 10px;
+button:hover {
+    background-color: #2980b9;
 }
 
-#dealer-cards img {
-    height: 175px;
-    width: 125px;
-    margin: 1px;
+button:disabled {
+    background-color: #7f8c8d;
+    cursor: not-allowed;
 }
 
-#player-cards img {
-    height: 175px;
-    width: 125px;
-    margin: 1px;
+.controls {
+    margin-top: 20px;
+}
+
+#result {
+    font-size: 1.5em;
+    margin-top: 20px;
 }

@@ -3,27 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Russian Roulette Blackjack</title>
-    <script src="blackjack.js"></script>
+    <title>Blackjack Game</title>
     <link rel="stylesheet" href="blackjack.css">
 </head>
 <body>
-    <h2>Dealer: <span id="dealersum"></span></h2>
-    <div id="dealer-cards">
-        <img src="cards/BACK.png" alt="Black of playing card">
-        <img src="cards/10-C.png" alt="10 of clubs">
+    <div class="game-container">
+        <h1>Blackjack Game</h1>
+        <div class="players-cards">
+            <h2>Your Cards:</h2>
+            <div id="player-cards" class="cards">
+                
+            </div>
+            <p>Score: <span id="player-score">0</span></p>
+        </div>
+        
+        <div class="dealer-cards">
+            <h2>Dealer's Cards:</h2>
+            <div id="dealer-cards" class="cards">
+                
+            </div>
+            <p>Score: <span id="dealer-score">0</span></p>
+        </div>
+        
+        <div class="controls">
+            <button id="hit-button">Hit</button>
+            <button id="stand-button">Stand</button>
+            <button id="start-button">Start New Game</button>
         </div>
 
-    <h2>Player: <span id="playersum"></span></h2>
-    <div id="player-cards">
-        <img src="cards/BACK.png" alt="Black of playing card">
-        <img src="cards/10-C.png" alt="10 of clubs">
+        <div id="result"></div>
     </div>
-
-        <button id="hit">Hit</button>
-        <button id="stay">Stay</button>
     
-    <p id="Results:"></p>
-    
+    <script src="blackjack.js"></script>
 </body>
 </html>
