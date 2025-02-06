@@ -12,9 +12,9 @@ body {
 }
 
 .game-container {
-    max-width: 800px;
+    max-width: 100vw;
     margin: 0 auto;
-    padding: 20px;
+    padding: 50px;
 }
 
 h1 {
@@ -36,6 +36,17 @@ h2 {
 .cards img {
     width: 70px;
     margin: 5px;
+}
+
+.dealergameswon {
+    justify-content: flex-start;
+    display: flex;
+}
+
+#dgamescore {
+    justify-content: flex-start;
+    display: flex;
+    margin-left: 5px;
 }
 
 button {
@@ -64,4 +75,16 @@ button:disabled {
 #result {
     font-size: 1.5em;
     margin-top: 20px;
+}
+
+.playergameswon {
+    justify-content: flex-end;
+    display: flex;
+    margin-top: 10vw;
+}
+
+#pgamescore {
+    justify-content: flex-start;
+    display: flex;
+    margin-left: 5px;
 }

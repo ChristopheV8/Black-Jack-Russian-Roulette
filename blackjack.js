@@ -3,7 +3,8 @@ let playerHand = [];
 let dealerHand = [];
 let playerScore = 0;
 let dealerScore = 0;
-let hidden = null
+let hidden = null;
+let dealerwins = 0;
 
 const suits = ['C', 'D', 'H', 'S'];
 const values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
@@ -91,9 +92,11 @@ function displayCards() {
     calculateScores();
 }
 
+
 function calculateScores() {
     playerScore = calculateHandScore(playerHand);
-    dealerScore = calculateHandScore(dealerHand);
+    dealerTotalScore = calculateHandScore(dealerHand);
+    dealerScore = cardscore(dealerHand[1]);
 
     playerScoreSpan.textContent = playerScore;
     dealerScoreSpan.textContent = dealerScore;
@@ -101,9 +104,23 @@ function calculateScores() {
     if (playerScore > 21) {
         resultDiv.innerHTML = 'You busted! Dealer wins!';
         disableButtons();
-    } else if (dealerScore > 21) {
+    } else if (dealerTotalScore > 21) {
         resultDiv.innerHTML = 'Dealer busted! You win!';
         disableButtons();
+    } else if (dealerTotalScore == 21) {
+        resultDiv.innerHTML = 'Dealer wins!';
+        disableButtons();
+    }
+}
+
+function cardscore(card) {
+    const value = card.split('-')[0];
+    if (value === 'A') {
+        return 11;
+    } else if (['K', 'Q', 'J'].includes(value)) {
+        return 10;
+    } else {
+        return parseInt(value);
     }
 }
 
@@ -141,16 +158,17 @@ function playerStand() {
 }
 
 function dealerPlay() {
-    while (dealerScore < 17) {
+    while (dealerTotalScore < 17) {
         dealerHand.push(deck.pop());
         displayCards();
     }
 
-    if (dealerScore > 21) {
+    if (dealerTotalScore > 21) {
         resultDiv.innerHTML = 'Dealer busted! You win!';
-    } else if (dealerScore > playerScore) {
+    } else if (dealerTotalScore > playerScore) {
         resultDiv.innerHTML = 'Dealer wins!';
-    } else if (dealerScore < playerScore) {
+        pointsystem();
+    } else if ( dealerTotalScore < playerScore) {
         resultDiv.innerHTML = 'You win!';
     } else {
         resultDiv.innerHTML = 'It\'s a tie!';
@@ -162,5 +180,14 @@ function dealerPlay() {
 function disableButtons() {
     hitButton.disabled = true;
     standButton.disabled = true;
-    dealerScoreSpan.textContent = dealerScore;
+    dealerScoreSpan.textContent = dealerTotalScore;
+    dealerCardsDiv.children[0].src = `cards/${dealerHand[0]}.png`;
+}
+
+function pointsystem(player = null) {
+    if (!player){
+        resultDiv.innerHTML = '1 win for dealer';
+        dealerwins++;
+        document.getElementById('dgamescore').innerText=dealerwins;
+    } 
 }

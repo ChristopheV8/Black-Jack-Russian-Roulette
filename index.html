@@ -9,13 +9,7 @@
 <body>
     <div class="game-container">
         <h1>Blackjack Game</h1>
-        <div class="players-cards">
-            <h2>Your Cards:</h2>
-            <div id="player-cards" class="cards">
-                
-            </div>
-            <p>Score: <span id="player-score">0</span></p>
-        </div>
+        <p class="dealergameswon">Dealer's Wins: <span id="dgamescore">0</span></p>
         
         <div class="dealer-cards">
             <h2>Dealer's Cards:</h2>
@@ -24,12 +18,22 @@
             </div>
             <p>Score: <span id="dealer-score">0</span></p>
         </div>
+
+        <div class="players-cards">
+            <h2>Your Cards:</h2>
+            <div id="player-cards" class="cards">
+                
+            </div>
+            <p>Score: <span id="player-score">0</span></p>
+        </div>
         
         <div class="controls">
             <button id="hit-button">Hit</button>
             <button id="stand-button">Stand</button>
             <button id="start-button">Start New Game</button>
         </div>
+
+        <p class="playergameswon">Player's Wins: <span id="pgamescore">0</span></p>
 
         <div id="result"></div>
     </div>
