@@ -5,6 +5,7 @@ let playerScore = 0;
 let dealerScore = 0;
 let hidden = null;
 let dealerwins = 0;
+let playerwins = 0;
 
 const suits = ['C', 'D', 'H', 'S'];
 const values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
@@ -103,14 +104,23 @@ function calculateScores() {
 
     if (playerScore > 21) {
         resultDiv.innerHTML = 'You busted! Dealer wins!';
+        dealerwins++;               
+        document.getElementById('dgamescore').innerText=dealerwins;
         disableButtons();
-    } else if (dealerTotalScore > 21) {
-        resultDiv.innerHTML = 'Dealer busted! You win!';
-        disableButtons();
+
     } else if (dealerTotalScore == 21) {
-        resultDiv.innerHTML = 'Dealer wins!';
+        resultDiv.innerHTML = 'How unfortunate the dealer wins again.';
+        dealerwins++;               
+        document.getElementById('dgamescore').innerText=dealerwins;
         disableButtons();
-    }
+
+    } else if (playerScore == 21, dealerTotalScore > 21) {
+        resultDiv.innerHTML = 'Suck it dealer you lose!';
+        playerwins++;               
+        document.getElementById('pgamescore').innerText=playerwins;
+        disableButtons();
+
+    } 
 }
 
 function cardscore(card) {
@@ -165,11 +175,25 @@ function dealerPlay() {
 
     if (dealerTotalScore > 21) {
         resultDiv.innerHTML = 'Dealer busted! You win!';
+        playerwins++
+        document.getElementById('pgamescore').innerText=playerwins
+
     } else if (dealerTotalScore > playerScore) {
-        resultDiv.innerHTML = 'Dealer wins!';
-        pointsystem();
-    } else if ( dealerTotalScore < playerScore) {
-        resultDiv.innerHTML = 'You win!';
+        resultDiv.innerHTML = '1 win for dealer';
+        dealerwins++;               
+        document.getElementById('dgamescore').innerText=dealerwins;
+
+    } else if (dealerTotalScore < playerScore) {
+        resultDiv.innerHTML = '1 win for player';
+        playerwins++;               
+        document.getElementById('pgamescore').innerText=playerwins;
+
+    } else if (dealerTotalScore == playerScore) {
+        resultDiv.innerHTML = 'We live to play anoter game -1pt for both of us.';
+        playerwins--
+        dealerwins--
+        document.getElementById('pgamescore').innerText=playerwins
+        document.getElementById('dgamescore').innerText=dealerwins
     } else {
         resultDiv.innerHTML = 'It\'s a tie!';
     }
@@ -182,12 +206,4 @@ function disableButtons() {
     standButton.disabled = true;
     dealerScoreSpan.textContent = dealerTotalScore;
     dealerCardsDiv.children[0].src = `cards/${dealerHand[0]}.png`;
-}
-
-function pointsystem(player = null) {
-    if (!player){
-        resultDiv.innerHTML = '1 win for dealer';
-        dealerwins++;
-        document.getElementById('dgamescore').innerText=dealerwins;
-    } 
 }

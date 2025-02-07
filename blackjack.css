@@ -6,15 +6,16 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-image: url(bjbg.png);
     color: white;
     text-align: center;
+    background-image: url(bjbg.png);
+    background-size: cover;
 }
 
 .game-container {
     max-width: 100vw;
     margin: 0 auto;
-    padding: 50px;
+    padding: 5px;
 }
 
 h1 {
@@ -41,6 +42,7 @@ h2 {
 .dealergameswon {
     justify-content: flex-start;
     display: flex;
+    margin-left: 5vw;
 }
 
 #dgamescore {
@@ -80,7 +82,8 @@ button:disabled {
 .playergameswon {
     justify-content: flex-end;
     display: flex;
-    margin-top: 10vw;
+    margin-top: 5vh;
+    margin-right: 10vw;
 }
 
 #pgamescore {
