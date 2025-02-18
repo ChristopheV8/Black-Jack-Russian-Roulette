@@ -114,12 +114,6 @@ function calculateScores() {
         document.getElementById('dgamescore').innerText=dealerwins;
         disableButtons();
 
-    } else if (playerScore == 21, dealerTotalScore > 21) {
-        resultDiv.innerHTML = 'Suck it dealer you lose!';
-        playerwins++;               
-        document.getElementById('pgamescore').innerText=playerwins;
-        disableButtons();
-
     } 
 }
 
